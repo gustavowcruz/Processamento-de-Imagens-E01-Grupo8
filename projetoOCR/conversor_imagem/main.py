@@ -27,11 +27,11 @@ if __name__ == "__main__":
     from tqdm import tqdm
     from mltu.configs import BaseModelConfigs
     
-    configuracoes = BaseModelConfigs.load("Models/1_image_to_word/202211270035/configs.yaml")
+    configuracoes = BaseModelConfigs.load("Modelos/conversor_imagem/202211270035/configs.yaml")
 
     modelo = ModeloImagemParaPalavra(model_path=configuracoes.model_path, lista_caracteres=configuracoes.vocab)
 
-    df = pd.read_csv("Models/1_image_to_word/202211270035/val.csv").dropna().values.tolist()
+    df = pd.read_csv("Modelos/conversor_imagem/202211270035/val.csv").dropna().values.tolist()
 
     acumulador_cer = []
     for caminho_imagem, rotulo in tqdm(df[:20]):
