@@ -28,7 +28,7 @@ if __name__ == "__main__":
     from mltu.configs import BaseModelConfigs
     
     configuracoes = BaseModelConfigs.load("Modelos/conversor_imagem/202211270035/configs.yaml")
-
+    print(configuracoes.model_path)
     modelo = ModeloImagemParaPalavra(model_path=configuracoes.model_path, lista_caracteres=configuracoes.vocab)
 
     df = pd.read_csv("Modelos/conversor_imagem/202211270035/val.csv").dropna().values.tolist()

@@ -2,6 +2,6 @@ batch_size: 192
 height: 32
 learning_rate: 0.0001
 max_text_length: 23
-model_path: Models/1_image_to_word/202211270035
+model_path: Modelos/conversor_imagem/202211270035
 vocab: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
 width: 128
