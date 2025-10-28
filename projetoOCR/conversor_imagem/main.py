@@ -43,7 +43,6 @@ if __name__ == "__main__":
             cer = get_cer(texto_previsto, rotulo)
             print(f"Image: {caminho_imagem}, Label: {rotulo}, Prediction: {texto_previsto}, CER: {cer}")
 
-            # resize image by 3 times for visualization
             imagem = cv2.resize(imagem, (imagem.shape[1] * 3, imagem.shape[0] * 3))
             cv2.imshow(texto_previsto, imagem)
             cv2.waitKey(0)
