@@ -22,47 +22,45 @@ def calculate_distance_transform(binary_image):
     return dist_transform
 
 # Módulo de Segmentação por Watershed
+# Cria os marcadores (sementes)
 def generate_markers(binary_image):
-    #Cria os marcadores (sementes) para o algoritmo Watershed
-
-    
     # 1. Calcular a Transformada de Distância
-    # Isso nos dá os "centros" dos objetos 
+    # Descobre os "centros" dos objetos
     dist_transform = calculate_distance_transform(binary_image)
-    
+
     # 2. Identificar "Primeiro Plano Certo" (Sure Foreground)
     # Aplica um limiar na transformada de distância
     # Pixels com alta distância (claros) são objetos
     # O valor 0.7*max() é um ponto de partida
     _, sure_fg = cv2.threshold(dist_transform, 0.7 * dist_transform.max(), 255, 0)
     sure_fg = np.uint8(sure_fg)
-    
+
     # 3. Identificar "Fundo Certo" (Sure Background)
     # Dilata a imagem original. A área que cresce é o fundo
     sure_bg = cv2.dilate(binary_image, None, iterations=3)
-    
+
     # 4. Identificar Região Desconhecida
     # A região que não é nem fundo certo nem primeiro plano certo
     unknown = cv2.subtract(sure_bg, sure_fg)
-    
+
     # 5. Criar Mapa de Marcadores
-    # Rotula os componentes do "primeiro plano certo" 
+    # Rotula os componentes do "primeiro plano certo"
     # O OpenCV connectedComponents rotula o fundo como 0
     _, markers = cv2.connectedComponents(sure_fg)
-    
+
     # Adiciona 1 a todos os rótulos para que 0 (fundo) não seja um rótulo
     # Agora, 0 é "desconhecido", 1 é "fundo", 2+ são objetos
     markers = markers + 1
-    
+
     # Marca a região desconhecida (calculada na Etapa 4) com 0
     markers[unknown == 255] = 0
-    
+
     # Retorna os marcadores e imagens intermediárias para visualização
     return markers, dist_transform, sure_fg, sure_bg
 
 # Aplica o algoritmo Watershed para segmentar a imagem.
 def apply_watershed(original_image, markers):
-    
+
     # O algoritmo Watershed do OpenCV espera uma imagem colorida (3 canais)
     # Se a imagem for binária, converta-a para BGR
     if len(original_image.shape) == 2:
@@ -73,11 +71,11 @@ def apply_watershed(original_image, markers):
     # Aplica o Watershed
     # O algoritmo modifica o array 'markers'
     cv2.watershed(original_image_color, markers)
-    
+
     # As bordas (cumes) que separam os objetos são marcadas com -1
     # Pinta as bordas de vermelho na imagem colorida
     original_image_color[markers == -1] = [0, 0, 255] # Formato BGR
-    
+
     # 'markers' agora contém os objetos segmentados (rótulos > 1) e as bordas (-1)
     return original_image_color, markers
 
@@ -95,7 +93,6 @@ markers, dist_transform, sure_fg, sure_bg = generate_markers(binary_image)
 segmented_image_visual, segmented_markers = apply_watershed(binary_image, markers)
 
 # 4. Integração com 'segmented_markers' é enviado para a função 'extract_metrics'
-
 
 # Visualização completa do Módulo Watershed
 plt.figure(figsize=(12, 8))
