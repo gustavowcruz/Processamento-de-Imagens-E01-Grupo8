@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import numpy as np
 
 def get_neighbors(pixel, image_shape, connectivity_type=8):
@@ -114,3 +115,6 @@ if __name__ == '__main__':
     print(f"  - Vizinhança 4: {neighbors_4}")
     neighbors_8 = get_neighbors(pixel_to_test, image_shape_for_test, connectivity_type=8)
     print(f"  - Vizinhança 8: {neighbors_8}")
+=======
+print('hello world')
+>>>>>>> main
