@@ -33,5 +33,5 @@ pips necessários:
 ● pip install numpy 
 ● pip install opencv-contrib-python
 
-PROJETO COMPLECOM COM O DATASET
+PROJETO COMPLETO COM O DATASET
 https://drive.google.com/file/d/1cT2yY2tiNi_V39r3HPTC5DTY2GlotYO1/view?usp=sharing
