@@ -43,8 +43,4 @@ REQUISITOS
 ADCIONAR DATASET
 90kDICT32px NA PASTA DATASETS 
 
-
-pips necessários
-pip install opencv-python
-pip install numpy
-pip install opencv-contrib-python
+rode pip install -r requeriments.txt no terminal para instalar as bibliotecas necessárias.
