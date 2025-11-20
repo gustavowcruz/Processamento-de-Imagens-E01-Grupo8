@@ -23,15 +23,14 @@
 ● Funções Específicas a Desenvolver: calculate_distance_transform(binary_image): Gera o mapa de distância da imagem. extract_metric (labeled_image): Calcula área, perímetro e centróide para cada componente rotulado.
 ● Responsabilidade no Relatório: Elaborar a seção sobre métricas de componentes e a aplicação da transformada de distância.
 
-
 REQUISITOS
-----------------------------------------------------------------------------------------------------
-ADCIONAR DATASET 90kDICT32px NA PASTA DATASETS
 
-pips necessários:
-● pip install opencv-python 
-● pip install numpy 
-● pip install opencv-contrib-python
+----------------
+ADCIONAR DATASET
+90kDICT32px NA PASTA DATASETS 
 
-PROJETO COMPLETO COM O DATASET
+
+Projeto completo com o dataset:
 https://drive.google.com/file/d/1cT2yY2tiNi_V39r3HPTC5DTY2GlotYO1/view?usp=sharing
+
+Rode pip install -r requeriments.txt no terminal para instalar as bibliotecas necessárias.
