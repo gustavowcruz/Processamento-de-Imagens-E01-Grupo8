@@ -33,4 +33,4 @@ ADCIONAR DATASET
 Projeto completo com o dataset:
 https://drive.google.com/file/d/1cT2yY2tiNi_V39r3HPTC5DTY2GlotYO1/view?usp=sharing
 
-Rode pip install -r requeriments.txt no terminal para instalar as bibliotecas necessárias.
+Rode pip install -r requiriments.txt no terminal para instalar as bibliotecas necessárias.
